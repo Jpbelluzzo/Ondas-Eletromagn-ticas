@@ -22,6 +22,12 @@ V = {}                  # tensao na linha de transmissao
 V_ = {}                 # tensao calculada para simplificacao de contas
 I = {}                  # corrente na linha de transmissao
 
+def fonte(n):
+    if(DeltaT * n < (l)/(10*uf)):
+        return 1
+    else:
+        return 0
+
 # constantes
 c1 = 2 * DeltaT / (Rs * C * DeltaZ)
 if(Rl!=0):
@@ -39,7 +45,7 @@ for k in range(0, Kmax):
 for n in range(1, Nmax):
     for k in range(Kmax):
         if k == 0:
-            V_[k, n] = (1 - c1) * V_[k, n - 1] - 2 * I[k, n - 1] + 2 / Rs * Vg
+            V_[k, n] = (1 - c1) * V_[k, n - 1] - 2 * I[k, n - 1] + 2 / Rs * fonte(n)
         elif k == Kmax - 1:
             V_[k, n] = (1 - c2) * V_[k, n - 1] + 2 * I[k - 1, n - 1]
         else:
