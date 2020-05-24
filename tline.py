@@ -1,22 +1,20 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # import das bibliotecas
 import numpy as np
 import time
 
-c = 299792458           # velocidade da luz no vacuo (m/s)
-l = 10000               # comprimento da linha de transmissao (m)
-uf = 0.9 * c            # velocidade do sinal de tensao (m/s)
-t_estac = 10 * l / uf
-DeltaZ = l / 100
-DeltaT = DeltaZ / uf * 0.5
-Kmax = 100
-Nmax = int(t_estac / DeltaT)
-Z0 = 50.0               # impedancia caracteristica
-Vg = 2                  # tensao da fonte
-Rs = 75.0               # impedancia interna da fonte
-Rl = 1/np.Inf
+c = 299792458                   # velocidade da luz no vacuo (m/s)
+l = 10000                       # comprimento da linha de transmissao (m)
+uf = 0.9 * c                    # velocidade do sinal de tensao (m/s)
+t_estac = 10 * l / uf           # tempo estacionario (tempo para sinal ir e voltar 10x)
+DeltaZ = l / 100                # infinitesimo de espaco
+DeltaT = DeltaZ / uf * 0.5      # infinitesimo de tempo
+Kmax = 100                      # numero de amostras no espaco
+Nmax = int(t_estac / DeltaT)    # numero de amostras no tempo
+Z0 = 50.0                       # impedancia caracteristica
+Rs = 75.0                       # impedancia interna da fonte
 
-C = 1 / (Z0 * uf)
-L = Z0 * Z0 * C
+C = 1 / (Z0 * uf)               # Capacitancia por unidade de espaco
+L = Z0 * Z0 * C                 # Indutancia por unidade de espaco
 
 V = {}                  # tensao na linha de transmissao
 V_ = {}                 # tensao calculada para simplificacao de contas
@@ -38,7 +36,7 @@ I = {}                  # corrente na linha de transmissao
 #Fonte Vg = 2u(t)
 '''
 def Vg(n):
-    return 1
+    return 2
 '''
 
 #Fonte Vg = [u(t) - u(t - l/10uf)]
@@ -101,7 +99,7 @@ axs[1].set_title("Corrente")
 axs[0].set(xlabel = 'Posicao z em metros', ylabel = 'Tensao em volts')
 axs[0].set_ylim([-2.5,2.5])
 axs[0].grid()
-axs[1].set(xlabel = 'Posicaoo z em metros', ylabel = 'Corrente em amperes')
+axs[1].set(xlabel = 'Posicao z em metros', ylabel = 'Corrente em amperes')
 #axs[1].set_xlim([0,50])
 axs[1].set_ylim([-0.025,0.025])
 axs[1].grid()
