@@ -2,9 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import time
 
-x = np.linspace(0, 10*np.pi, 100)
-y = np.sin(x)
-
 c = 299792458           # velocidade da luz no vacuo (m/s)
 l = 10000               # comprimento da linha de transmissao (m)
 uf = 0.9 * c            # velocidade do sinal de tensao (m/s)
@@ -16,7 +13,7 @@ Nmax = int(t_estac / DeltaT)
 Z0 = 50.0               # impedancia caracteristica  
 Vg = 2                  # tensao da fonte
 Rs = 75.0               # impedancia interna da fonte   
-Rl = 100
+Rl = 1/np.Inf
 
 C = 1 / (Z0 * uf)
 L = Z0 * Z0 * C
@@ -68,7 +65,7 @@ xV = np.linspace(0, l, l/DeltaZ)    #Seta o eixo horizontal para cada valor disc
 plt.ion()                           #Define o grafico como interativo
 fig,axs = plt.subplots(2)
 lineV, = axs[0].plot(xV, VFixedTime, 'b-')
-xI = x[:-1]
+xI = np.linspace(0, l-DeltaZ, l/DeltaZ -1)
 lineI, = axs[1].plot(xI, IFixedTime, 'b-')
 axs[0].set_title("Tensao")
 axs[1].set_title("Corrente")
@@ -76,8 +73,8 @@ axs[1].set_title("Corrente")
 axs[0].set(xlabel = 'Posicao z em metros', ylabel = 'Tensao em volts')
 
 axs[0].set_ylim([-3,3])
-axs[1].set_xlim([0,50])
-axs[1].set_ylim([-0.01,0.01])
+#axs[1].set_xlim([0,50])
+axs[1].set_ylim([-0.2,0.2])
 
 for N in range(Nmax):
     VFixedTime = []                 #Reseta o vetor
@@ -87,6 +84,7 @@ for N in range(Nmax):
     for k in range(Kmax-1):
         IFixedTime.append(I[k, N])
     lineV.set_ydata(VFixedTime)
+    lineI.set_ydata(IFixedTime)
     fig.canvas.draw()
     #time.sleep(0.001)
 
