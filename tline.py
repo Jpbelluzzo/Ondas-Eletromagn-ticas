@@ -10,9 +10,9 @@ DeltaZ = l / 100
 DeltaT = DeltaZ / uf * 0.5
 Kmax = 100
 Nmax = int(t_estac / DeltaT)
-Z0 = 50.0               # impedancia caracteristica  
+Z0 = 50.0               # impedancia caracteristica
 Vg = 2                  # tensao da fonte
-Rs = 75.0               # impedancia interna da fonte   
+Rs = 75.0               # impedancia interna da fonte
 Rl = 1/np.Inf
 
 C = 1 / (Z0 * uf)
@@ -71,10 +71,14 @@ axs[0].set_title("Tensao")
 axs[1].set_title("Corrente")
 
 axs[0].set(xlabel = 'Posicao z em metros', ylabel = 'Tensao em volts')
-
-axs[0].set_ylim([-3,3])
+axs[0].set_ylim([-2.5,2.5])
+axs[0].grid()
+axs[1].set(xlabel = 'Posição z em metros', ylabel = 'Corrente em amperes')
 #axs[1].set_xlim([0,50])
-axs[1].set_ylim([-0.2,0.2])
+axs[1].set_ylim([-0.025,0.025])
+axs[1].grid()
+
+fig.tight_layout()
 
 for N in range(Nmax):
     VFixedTime = []                 #Reseta o vetor
