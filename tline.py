@@ -1,11 +1,12 @@
-import matplotlib.pyplot as plt # import das bibliotecas
+# import das bibliotecas
+import matplotlib.pyplot as plt 
 import numpy as np
 import time
 
 c = 299792458                   # velocidade da luz no vacuo (m/s)
 l = 10000                       # comprimento da linha de transmissao (m)
 uf = 0.9 * c                    # velocidade do sinal de tensao (m/s)
-t_estac = 10 * l / uf           # tempo estacionario (tempo para sinal ir e voltar 10x)
+t_estac = 10 * l / uf           # tempo estacionario (tempo para sinal ir ou voltar 10x)
 DeltaZ = l / 100                # infinitesimo de espaco
 DeltaT = DeltaZ / uf * 0.5      # infinitesimo de tempo
 Kmax = 100                      # numero de amostras no espaco
