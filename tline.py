@@ -22,11 +22,33 @@ V = {}                  # tensao na linha de transmissao
 V_ = {}                 # tensao calculada para simplificacao de contas
 I = {}                  # corrente na linha de transmissao
 
-def fonte(n):
-    if(DeltaT * n < (l)/(10*uf)):
-        return 1
+#Escolha da resistencia da carga Rl (Tire o comentario do caso desejado)
+
+#Resistencia na carga de 100 Ohm
+#Rl = 100
+
+#Resistencia na carga 0 (Curto Circuito)
+#Rl = 0
+
+#Resistencia na carga infinita (Circuito Aberto)
+#Rl = np.Inf
+
+#Escolha da fonte de tensao Vg (Tire o comentario do caso desejado)
+
+#Fonte Vg = 2u(t)
+'''
+def Vg(n):
+    return 1
+'''
+
+#Fonte Vg = [u(t) - u(t - l/10uf)]
+'''
+def Vg(n):
+    if(DeltaT * n < (l)/(10*uf)):                                                          
+        return 1                               
     else:
         return 0
+'''
 
 # constantes
 c1 = 2 * DeltaT / (Rs * C * DeltaZ)
@@ -45,7 +67,7 @@ for k in range(0, Kmax):
 for n in range(1, Nmax):
     for k in range(Kmax):
         if k == 0:
-            V_[k, n] = (1 - c1) * V_[k, n - 1] - 2 * I[k, n - 1] + 2 / Rs * fonte(n)
+            V_[k, n] = (1 - c1) * V_[k, n - 1] - 2 * I[k, n - 1] + 2 / Rs * Vg(n)
         elif k == Kmax - 1:
             V_[k, n] = (1 - c2) * V_[k, n - 1] + 2 * I[k - 1, n - 1]
         else:
@@ -79,7 +101,7 @@ axs[1].set_title("Corrente")
 axs[0].set(xlabel = 'Posicao z em metros', ylabel = 'Tensao em volts')
 axs[0].set_ylim([-2.5,2.5])
 axs[0].grid()
-axs[1].set(xlabel = 'Posição z em metros', ylabel = 'Corrente em amperes')
+axs[1].set(xlabel = 'Posicaoo z em metros', ylabel = 'Corrente em amperes')
 #axs[1].set_xlim([0,50])
 axs[1].set_ylim([-0.025,0.025])
 axs[1].grid()
