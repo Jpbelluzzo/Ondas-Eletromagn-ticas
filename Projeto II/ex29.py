@@ -39,7 +39,7 @@ for n in range(1, N):
     for i in range(j, 200):
         if (i != 0 and i != 199):
             u[n, i] = (S(i)**2) * (u[n-1, i+1] - 2*u[n-1, i] +
-                                u[n-1, i-1]) + 2*u[n-1, i]
+                                   u[n-1, i-1]) + 2*u[n-1, i]
         elif i == 0:
             u[n, i] = (S(i)**2) * (u[n-1, i+1] - 2*u[n-1, i]) + 2*u[n-1, i]
         else:
@@ -56,5 +56,10 @@ t1 = np.arange(0, 200, 1)
 
 plt.figure()
 plt.plot(t1, u_plot_S1, 'k')
+plt.axvline(color='k', ls='--', x=140, ymin=-1, ymax=1)
+plt.text(150, -0.4, "S = 0.25")
+plt.text(115, -0.4, "S = 1")
+plt.xlabel("Coordenada i da malha")
+plt.ylabel("Funcao de onda u(i)")
 
 plt.show()
