@@ -40,7 +40,7 @@ for n in range(Nmax):
     Ez[Kmax, n] = 0
 
 # Atribui 0 para Hy no tempo n = 0
-for i in range(Kmax-1):
+for i in range(Kmax):
     Hy[i, 0] = 0
 
 # Equacoes do FDTD
@@ -52,10 +52,8 @@ Ez[i,n] = Ca * Ez[i, n-1] + Cb * (Hy[i, n-1] - Hy[i-1, n-1])
 # Implementacao do FDTD
 for n in range(1, Nmax):
     for i in range(1, Kmax):
-        Ez[i, n] = Ca * Ez[i, n-1] - Cb * Hy[i-1, n-1]
-        if i != Kmax-1:
-            Ez[i, n] += Cb * Hy[i, n-1]
-    for i in range(Kmax-1):
+        Ez[i, n] = Ca * Ez[i, n-1] - Cb * Hy[i-1, n-1] + Cb * Hy[i, n-1]
+    for i in range(Kmax):
         Hy[i, n] = Da * Hy[i, n-1] + Db * (Ez[i+1, n] - Ez[i, n])
 
 # Plotagem
