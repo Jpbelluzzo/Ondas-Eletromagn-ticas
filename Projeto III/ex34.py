@@ -37,7 +37,7 @@ for n in range(Nmax):
 
 # No limite direito, Ez = 0 => condutor eletrico perfeito
 for n in range(Nmax):
-    Ez[Kmax, n] = 0
+    Hy[Kmax-1, n] = 0
 
 # Atribui 0 para Hy no tempo n = 0
 for i in range(Kmax):
@@ -53,7 +53,7 @@ Ez[i,n] = Ca * Ez[i, n-1] + Cb * (Hy[i, n-1] - Hy[i-1, n-1])
 for n in range(1, Nmax):
     for i in range(1, Kmax):
         Ez[i, n] = Ca * Ez[i, n-1] - Cb * Hy[i-1, n-1] + Cb * Hy[i, n-1]
-    for i in range(Kmax):
+    for i in range(Kmax-1):
         Hy[i, n] = Da * Hy[i, n-1] + Db * (Ez[i+1, n] - Ez[i, n])
 
 # Plotagem

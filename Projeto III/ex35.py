@@ -5,7 +5,7 @@ import numpy as np
 
 tam = 150
 DeltaX = 1                      # infinitesimo de espaco
-DeltaT = DeltaX / c             # infinitesimo de tempo
+DeltaT = 0.99 * DeltaX / c             # infinitesimo de tempo
 sigma = 0
 sigma_ = 0
 mu = mu_0
