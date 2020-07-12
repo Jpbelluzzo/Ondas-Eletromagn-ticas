@@ -1,6 +1,5 @@
 Esse projeto é relacionado à disciplina de Ondas Eletromagnéticas - SEL0612. Os alunos responsáveis são: João Pedro Fidelis Belluzzo (10716661), Luis Fernando Costa
-de Oliveira (10716532) e Thiago Daniel Cagnoni de Pauli (10716629). O objetivo deste trabalho é realizar a resolução de exercícios relacionados às equações de Maxwell, 
-baseando-se no método das  diferenças  finitas  no  tempo  (FDTD - Finite-Difference-Time-Domain Method).
+de Oliveira (10716532) e Thiago Daniel Cagnoni de Pauli (10716629). O objetivo deste trabalho é realizar a resolução de exercícios relacionados às equações de Maxwell, baseando-se no método das  diferenças  finitas  no  tempo  (FDTD - Finite-Difference-Time-Domain Method).
 
 Os códigos de cada exercício estão nesse folder, com nome "ex??.py", relativo a cada exercício resolvido. Os códigos foram feitos em python, seguindo padrões
 especificados pela PEP 8. Além disso, os prints dos gráficos de saída relacionados com cada exercício estão presentes no folder.
